@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Dangrek&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Dangrek", cursive;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: url(background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+body .select-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 30px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  transition: 0.5s;
+}
+body .select-box header {
+  font-size: 4.5em;
+  text-align: center;
+  border-bottom: 2px solid rgb(238, 238, 238);
+}
+body .select-box .content .title {
+  font-size: 3.5em;
+  text-align: center;
+  letter-spacing: 2px;
+  padding: 2rem 0 1rem;
+}
+body .select-box .content .options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+body .select-box .content .options .playerX,
+body .select-box .content .options .playerO {
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 2em;
+  font-weight: 200;
+  transition: 0.5s;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
+}
+body .select-box .content .options .playerX:hover,
+body .select-box .content .options .playerO:hover {
+  background: rgba(255, 255, 255, 0);
+  transform: scale(1.1);
+}
+body .select-box.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+body .play-board {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: 0.5s;
+}
+body .play-board .details {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 7px;
+  border-radius: 2rem;
+  text-align: center;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  margin-bottom: 20px;
+}
+body .play-board .details .players {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+body .play-board .details .players.active span:first-child {
+  color: #ca25a7;
+}
+body .play-board .details .players.active span:nth-child(2) {
+  color: white;
+}
+body .play-board .details span {
+  color: #ca25a7;
+  width: 50%;
+  font-size: 1.75rem;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  transition: 0.5s;
+}
+body .play-board .details span:first-child {
+  color: white;
+}
+body .play-board .details .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background: #ca25a7;
+  border-radius: 20px;
+  z-index: 2;
+  transition: 0.5s;
+}
+body .play-board .players.active .slider {
+  left: 50%;
+}
+body .play-board .play_area {
+  margin-top: 20px;
+}
+body .play-board section {
+  display: flex;
+}
+body .play-board section span {
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  height: 140px;
+  border-radius: 10px;
+  background: white;
+  margin: 5px;
+  padding: 30px 5px 5px 5px;
+  box-shadow: 0px 5px 5px 2px rgba(75, 74, 74, 0.2);
+  text-align: center;
+  font-size: 4.5rem;
+  color: #ca25a7;
+  line-height: 80px;
+}
+body .play-board.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+body .result-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px 40px;
+  border-radius: 1rem;
+  text-align: center;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  transition: 0.5s;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: 0.5s;
+  width: 50rem;
+  height: 25rem;
+  display: grid;
+  place-items: center;
+}
+body .result-box h1 {
+  font-size: 3rem;
+  color: #a70082;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+body .result-box .won-text {
+  font-size: 3rem;
+  color: #a70082;
+  width: 15ch;
+}
+body .result-box .btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+body .result-box .btn button {
+  border-radius: 2rem;
+  border: none;
+  background: #ca25a7;
+  color: white;
+  font-size: 2rem;
+  font-weight: 200;
+  transition: 0.5s;
+  padding: 0.2rem 2.5rem;
+  cursor: pointer;
+}
+body .result-box .btn button:hover {
+  transform: scale(1.1);
+}
+body .result-box.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}/*# sourceMappingURL=TTT.css.map */
